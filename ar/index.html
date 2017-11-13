@@ -1,57 +1,18 @@
-<!DOCTYPE html>
-<script src="vendor/aframe.js"></script>
-<script src="../build/aframe-ar.js"></script>
- 
-<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
-  <div style='position: fixed; top: 10px; width:inherit; text-align: center; z-index: 1;'></div>
- 
-  <!-- シーンにカメラのキャプチャを用い、白黒マーカーを検出するモードを指定する -->
-  <a-scene stats embedded artoolkit='sourceType: webcam; detectionMode: mono; maxDetectionRate: 30; canvasWidth: 240; canvasHeight: 180'>
- 
-    <!-- 穴を表現するオブジェクト（だが、アニメーションスキルが足りず影みたいになってしまっている...） -->
-    <a-circle position="0 0 0" rotation="-90 0 0" radius="0.01" color="#000000">
-      <a-animation
-        attribute="scale"
-        from="0 0 0"
-        to="120 120 120"
-        direction="alternate"
-        dur="1000"
-        begin="500"
-        repeat="infinite">
-      </a-animation>
-    </a-circle>
- 
-    <!-- スマイリーのオブジェクト。アニメーションでスケール、移動、回転を行っている -->
-    <a-sphere position="0 -0.1 0" radius="0.01" material="src: url(./smile.png)">
-      <a-animation
-        attribute="scale"
-        from="0 0 0"
-        to="100 100 100"
-        direction="alternate"
-        dur="1000"
-        begin="500"
-        repeat="infinite">
-      </a-animation>
-      <a-animation
-        attribute="position"
-        to="0 0.8 0"
-        direction="alternate"
-        dur="1000"
-        begin="500"
-        repeat="infinite">
-      </a-animation>
-      <a-animation
-        attribute="rotation"
-        to="0 630 0"
-        direction="alternate"
-        dur="1000"
-        begin="500"
-        repeat="infinite">
-      </a-animation>
-    </a-sphere>
- 
-    <!-- ARToolKitではおなじみの Hiro マーカーを使う -->
+<!-- Augmented Reality on the Web in 10 lines of html! https://github.com/jeromeetienne/ar.js --> 
+<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+<script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
+<script>THREEx.ArToolkitContext.baseURL = 'https://rawgit.com/jeromeetienne/ar.js/master/three.js/'</script>
+<body style='margin : 0px; overflow: hidden;'>
+  <a-scene embedded artoolkit='sourceType: webcam;'>
+  <a-sphere src="https://raw.githubusercontent.com/aframevr/sample-assets/master/assets/images/space/earth_atmos_4096.jpg" radius="0.5" position="0 0.5 0" segments-height="53">
+         <a-animation attribute="scale"
+              dur="1000"
+              from= "1 1 1"
+              to="2 2 2"
+              direction='alternate-reverse'
+              easing= "ease-in-out-circ"     
+              repeat="indefinite"></a-animation>
+     </a-sphere>
     <a-marker-camera preset='hiro'></a-marker-camera>
   </a-scene>
 </body>
-</html>
