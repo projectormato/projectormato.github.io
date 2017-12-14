@@ -15,7 +15,7 @@
 	</a-marker>
 
 	<a-marker preset="kanji">
-		<a-box src="https://projectormato.github.io/ar/yet.jpg" position='0 0.5 0' color='blue'></a-box>
+		<a-box id="result" src="https://projectormato.github.io/ar/yet.jpg" position='0 0.5 0' color='blue'></a-box>
 		<!-- <a-sphere src="https://projectormato.github.io/ar/yet.jpg" radius="0.5" position="0 0.5 0" segments-height="53"> -->
 	</a-marker>
 
@@ -24,9 +24,21 @@
 
 
 <div style="position: fixed; bottom: 100px;">
-  <a href="./miss.html"><button type="button">たこ焼き</button></a>
+  <button class="miss" type="button">たこ焼き</button>
   <a href="./correct.html"><button type="button">フライパン</button></a>
   <a href="./miss.html"><button type="button">フランスパン</button></a>
 </div>
+
+<script type="text/javascript">
+	window.onload = function() {
+		let result = document.getElementById('result');
+		let miss = document.getElementByClassName('miss');
+		miss.onclick = function missChange() {
+			result.style.color = 'white'
+		}
+	}
+</script>
+
+
 </body>
 </html>
